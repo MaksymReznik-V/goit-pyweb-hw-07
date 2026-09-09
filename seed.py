@@ -91,9 +91,19 @@ def grades_seed():
     session.add_all(grades)
     session.commit()
 
+def clear_database():
+    session.query(Grade).delete()
+    session.query(Student).delete()
+    session.query(Subject).delete()
+    session.query(Teacher).delete()
+    session.query(Group).delete()
+    session.commit()
+
 
 
 if __name__ == '__main__':
+    clear_database()
+
     groups_seed()
     teachers_seed()
     subjects_seed()
